@@ -1,4 +1,4 @@
-module github.com/workoak/wop/wou
+module github.com/workoak/woutil
 
 go 1.22.1
 

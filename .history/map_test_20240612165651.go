@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	wou "github.com/workoak/woutil"
+	"github.com/workoak/wop/wou"
 )
 
 func TestIterateByKey(t *testing.T) {

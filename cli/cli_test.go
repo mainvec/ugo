@@ -100,6 +100,7 @@ func TestFlags(t *testing.T) {
 		boolFlag   bool
 		stringFlag string
 		intFlag    int
+		int32Flag  int32
 	)
 	cmd := &Command{
 		Usage: "flags",
@@ -108,6 +109,7 @@ func TestFlags(t *testing.T) {
 	cmd.Flags().BoolVar(&boolFlag, "b", false, "bool value")
 	cmd.Flags().StringVar(&stringFlag, "string", "", "string value")
 	cmd.Flags().IntVar(&intFlag, "int", 0, "int value")
+	cmd.Flags().Int32Var(&int32Flag, "int32", 0, "int32 value")
 
 	ctx := context.Background()
 	if err := Execute(ctx, cmd, []string{"-b=true", "-string", "STRING", "-int=100"}); err != nil {

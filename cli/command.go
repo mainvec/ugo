@@ -53,13 +53,14 @@ type Command struct {
 
 	commands []*Command
 	parent   *Command
-	flags    *flag.FlagSet
+	flags    *FlagSet
 }
 
 // Flags returns the complete FlagSet that applies to this command.
-func (c *Command) Flags() *flag.FlagSet {
+func (c *Command) Flags() *FlagSet {
 	if c.flags == nil {
-		c.flags = flag.NewFlagSet(c.Name(), flag.ContinueOnError)
+		f := flag.NewFlagSet(c.Name(), flag.ContinueOnError)
+		c.flags = &FlagSet{*f}
 		var null bytes.Buffer
 		c.flags.SetOutput(&null)
 	}

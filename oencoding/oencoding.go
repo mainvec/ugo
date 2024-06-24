@@ -1,4 +1,4 @@
-package util
+package oencoding
 
 import "github.com/workoak/wogo/registry"
 

@@ -1,4 +1,4 @@
-module github.com/workoak/woutil
+module github.com/workoak/wogo
 
 go 1.22.1
 

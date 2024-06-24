@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/workoak/woutil/validate"
+	"github.com/workoak/wogo/validate"
 )
 
 func TestNewBucket(t *testing.T) {

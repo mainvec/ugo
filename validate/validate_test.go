@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"github.com/workoak/wogo/validate"
+	"golang.org/x/exp/constraints"
 )
 
 func TestNewBucket(t *testing.T) {
@@ -60,5 +61,39 @@ func TestRegExRule(t *testing.T) {
 	}
 	if bucket.ErrorCount() != 1 {
 		t.Fatalf("wanted 1 errors, got %v", bucket.ErrorCount())
+	}
+}
+
+func TestRange(t *testing.T) {
+	type args[K constraints.Ordered] struct {
+		from  K
+		to    K
+		value K
+	}
+	tests := []struct {
+		name string
+		args args[int]
+		want bool
+	}{
+
+		{
+			name: "valid range value",
+			args: args[int]{from: 1, to: 10, value: 5},
+			want: true,
+		},
+
+		{
+			name: "invalid range value",
+			args: args[int]{from: 1, to: 10, value: 11},
+			want: false,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			rule := validate.Range(tt.args.from, tt.args.to).RuleFunc()
+			if got, _ := rule(tt.args.value); got != tt.want {
+				t.Errorf("Range() = %v, want %v", got, tt.want)
+			}
+		})
 	}
 }

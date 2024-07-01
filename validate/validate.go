@@ -4,6 +4,8 @@ import (
 	"errors"
 	"fmt"
 	"regexp"
+
+	"golang.org/x/exp/constraints"
 )
 
 var _ ValidationRule = &DefaultValidationRule{}
@@ -210,6 +212,27 @@ func RegExRule(pattern string) ValidationRule {
 				return regex.Match(value), nil
 			case *[]byte:
 				return regex.Match(*value), nil
+			}
+			//no validation for other types. assume valid
+			return true, nil
+		},
+	}
+}
+
+// Range returns a validation rule that checks if the value is within the range.
+func Range[K constraints.Ordered](from K, to K) ValidationRule {
+	return &DefaultValidationRule{
+		ruleName:     "Range",
+		ruleErrorMsg: fmt.Sprintf("should be in range %v to %v", from, to),
+		ruleFunc: func(value any) (bool, error) {
+			if value == nil {
+				return true, nil
+			}
+			switch value := value.(type) {
+			case K:
+				return value >= from && value <= to, nil
+			case *K:
+				return *value >= from && *value <= to, nil
 			}
 			//no validation for other types. assume valid
 			return true, nil

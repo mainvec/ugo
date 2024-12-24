@@ -66,6 +66,16 @@ func (r *Registry[T]) List() []string {
 	return list
 }
 
+func (r *Registry[T]) ListValues() []T {
+	r.mu.RLock()
+	defer r.mu.RUnlock()
+	list := make([]T, 0, len(r.m))
+	for _, v := range r.m {
+		list = append(list, v)
+	}
+	return list
+}
+
 func (r *Registry[T]) Len() int {
 	r.mu.RLock()
 	defer r.mu.RUnlock()

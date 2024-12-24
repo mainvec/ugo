@@ -12,13 +12,16 @@ var _ ValidationRule = &DefaultValidationRule{}
 var (
 	Blank = &DefaultValidationRule{ruleName: "Blank",
 		ruleErrorMsg: "should be blank",
-		ruleFunc:     isBlank}
+		ruleFunc: func(value any) (bool, error) {
+			r := IsBlank(value)
+			return r, nil
+		}}
 
 	NotBlank = &DefaultValidationRule{ruleName: "NotBlank",
 		ruleErrorMsg: "should not be blank",
 		ruleFunc: func(value any) (bool, error) {
-			r, e := isBlank(value)
-			return !r, e
+			r := IsBlank(value)
+			return !r, nil
 		}}
 )
 
@@ -26,7 +29,7 @@ type Validator struct {
 }
 
 type ValidationBucket struct {
-	result DefaultValidationResult
+	result *DefaultValidationResult
 }
 
 func NewValidator() *Validator {
@@ -35,7 +38,7 @@ func NewValidator() *Validator {
 
 func NewBucket() *ValidationBucket {
 	return &ValidationBucket{
-		result: DefaultValidationResult{},
+		result: &DefaultValidationResult{},
 	}
 }
 
@@ -54,8 +57,8 @@ func (b *ValidationBucket) Validate(propName string, value any, vRule ...Validat
 	return v, nil
 }
 
-func (b *ValidationBucket) Result() ValidationResult {
-	return &b.result
+func (b *ValidationBucket) Result() *DefaultValidationResult {
+	return b.result
 }
 func (b *ValidationBucket) Error() error {
 	if b.result.Valid() {
@@ -102,19 +105,27 @@ func (r *DefaultValidationRule) RuleErrorMsg() string {
 	return r.ruleErrorMsg
 }
 
+func NewValidationRule(ruleName, ruleErrorMsg string, ruleFunc ValidationFunc) ValidationRule {
+	return &DefaultValidationRule{
+		ruleName:     ruleName,
+		ruleErrorMsg: ruleErrorMsg,
+		ruleFunc:     ruleFunc,
+	}
+}
+
 // Check is string len > 0. Accepts string or string pointer.
-func isBlank(v any) (bool, error) {
+func IsBlank(v any) bool {
 	if v == nil {
-		return true, nil
+		return true
 	}
 	switch v := v.(type) {
 	case string:
-		return len(v) == 0, nil
+		return len(v) == 0
 	case *string:
-		return len(*v) == 0, nil
+		return len(*v) == 0
 	default:
 		//no validation for other types. assume valid
-		return true, nil
+		return true
 	}
 }
 

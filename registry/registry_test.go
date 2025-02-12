@@ -4,7 +4,7 @@ import (
 	"slices"
 	"testing"
 
-	reg "github.com/workoak/wogo/registry"
+	reg "github.com/bytestandard/bsugo/registry"
 )
 
 type item interface {

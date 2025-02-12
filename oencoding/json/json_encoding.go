@@ -3,7 +3,7 @@ package json
 import (
 	"encoding/json"
 
-	"github.com/workoak/wogo/oencoding"
+	"github.com/bytestandard/bsugo/oencoding"
 )
 
 var _ oencoding.Encoding = (*JSONEncoding)(nil)

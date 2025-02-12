@@ -1,2 +1,2 @@
-# woutil
-workoak golang utilities 
+# bsugo
+ByteStandard golang utilities 

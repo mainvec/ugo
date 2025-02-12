@@ -1,6 +1,6 @@
 package oencoding
 
-import "github.com/workoak/wogo/registry"
+import "github.com/bytestandard/bsugo/registry"
 
 var (
 	encodingsRegistry = registry.NewRegistry[Encoding]()

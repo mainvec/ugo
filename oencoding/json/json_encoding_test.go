@@ -3,8 +3,8 @@ package json_test
 import (
 	"testing"
 
-	"github.com/workoak/wogo/oencoding"
-	_ "github.com/workoak/wogo/oencoding/json"
+	"github.com/bytestandard/bsugo/oencoding"
+	_ "github.com/bytestandard/bsugo/oencoding/json"
 )
 
 type TestObject struct {

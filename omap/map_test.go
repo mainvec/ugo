@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	omap "github.com/workoak/wogo/omap"
+	omap "github.com/bytestandard/bsugo/omap"
 )
 
 func TestIterateByKey(t *testing.T) {

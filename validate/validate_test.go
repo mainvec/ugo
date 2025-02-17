@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/bytestandard/bsugo/validate"
+	"github.com/mainvec/ugo/validate"
 	"golang.org/x/exp/constraints"
 )
 

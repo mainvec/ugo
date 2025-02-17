@@ -3,7 +3,7 @@ package collections_test
 import (
 	"testing"
 
-	"github.com/bytestandard/bsugo/collections"
+	"github.com/mainvec/ugo/collections"
 )
 
 func TestArrayContains(t *testing.T) {

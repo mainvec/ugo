@@ -3,7 +3,7 @@ package json
 import (
 	"encoding/json"
 
-	"github.com/bytestandard/bsugo/oencoding"
+	"github.com/mainvec/ugo/oencoding"
 )
 
 var _ oencoding.Encoding = (*JSONEncoding)(nil)

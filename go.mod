@@ -1,4 +1,4 @@
-module github.com/bytestandard/bsugo
+module github.com/mainvec/ugo
 
 go 1.22.1
 

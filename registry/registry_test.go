@@ -4,7 +4,7 @@ import (
 	"slices"
 	"testing"
 
-	reg "github.com/bytestandard/bsugo/registry"
+	reg "github.com/mainvec/ugo/registry"
 )
 
 type item interface {

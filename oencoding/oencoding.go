@@ -1,6 +1,6 @@
 package oencoding
 
-import "github.com/bytestandard/bsugo/registry"
+import "github.com/mainvec/ugo/registry"
 
 var (
 	encodingsRegistry = registry.NewRegistry[Encoding]()

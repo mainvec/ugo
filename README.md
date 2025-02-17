@@ -1,2 +1,2 @@
 # bsugo
-ByteStandard golang utilities 
+mainvec golang utilities 

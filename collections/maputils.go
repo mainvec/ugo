@@ -1,8 +1,8 @@
 package collections
 
-import "golang.org/x/exp/constraints"
+import "cmp"
 
-func CopyMap[K constraints.Ordered, V any](src map[K]V) map[K]V {
+func CopyMap[K cmp.Ordered, V any](src map[K]V) map[K]V {
 	if src == nil {
 		return nil
 	}

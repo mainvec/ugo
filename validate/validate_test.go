@@ -1,11 +1,11 @@
 package validate_test
 
 import (
+	"cmp"
 	"fmt"
 	"testing"
 
 	"github.com/mainvec/ugo/validate"
-	"golang.org/x/exp/constraints"
 )
 
 func TestNewBucket(t *testing.T) {
@@ -65,7 +65,7 @@ func TestRegExRule(t *testing.T) {
 }
 
 func TestRange(t *testing.T) {
-	type args[K constraints.Ordered] struct {
+	type args[K cmp.Ordered] struct {
 		from  K
 		to    K
 		value K

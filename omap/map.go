@@ -1,15 +1,14 @@
 package omap
 
 import (
+	"cmp"
 	"sort"
-
-	"golang.org/x/exp/constraints"
 )
 
 // OMap is a map with iteration order
-type OMap[K constraints.Ordered, V any] map[K]V
+type OMap[K cmp.Ordered, V any] map[K]V
 
-type iterator[K constraints.Ordered, V any] struct {
+type iterator[K cmp.Ordered, V any] struct {
 	i     int
 	_keys []K
 	_map  map[K]V
@@ -29,7 +28,7 @@ func (iter *iterator[K, V]) Next() (K, V) {
 
 }
 
-// func IteratorByKey[K constraints.Ordered, V any](_omap interface{}) iterator[K, V] {
+// func IteratorByKey[K cmp.Ordered, V any](_omap interface{}) iterator[K, V] {
 // 	omap, ok := _omap.(OMap[K, V])
 // 	if !ok {
 // 		panic("iterationByKey needs OMap")
@@ -38,7 +37,7 @@ func (iter *iterator[K, V]) Next() (K, V) {
 // }
 
 // Create a iterator for the map, ordered by map keys
-func IteratorByKey[K constraints.Ordered, V any](omap map[K]V) iterator[K, V] {
+func IteratorByKey[K cmp.Ordered, V any](omap map[K]V) iterator[K, V] {
 
 	keys := make([]K, 0, len(omap))
 	for k := range omap {
@@ -59,13 +58,13 @@ func (omap OMap[K, V]) IterateByKey() iterator[K, V] {
 	return IteratorByKey(omap)
 }
 
-type mapItem[K constraints.Ordered, V any] struct {
+type mapItem[K cmp.Ordered, V any] struct {
 	_k K
 	_v V
 }
 
 // Create a iterator for the map, ordered by map vlaues, using the lessFunc
-func IterateByValue[K constraints.Ordered, V any](omap map[K]V, lessFunc func(i, j V) bool) iterator[K, V] {
+func IterateByValue[K cmp.Ordered, V any](omap map[K]V, lessFunc func(i, j V) bool) iterator[K, V] {
 
 	items := make([]*mapItem[K, V], 0, len(omap))
 	for k, v := range omap {

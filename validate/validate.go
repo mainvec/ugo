@@ -1,11 +1,10 @@
 package validate
 
 import (
+	"cmp"
 	"errors"
 	"fmt"
 	"regexp"
-
-	"golang.org/x/exp/constraints"
 )
 
 var _ ValidationRule = &DefaultValidationRule{}
@@ -231,7 +230,7 @@ func RegExRule(pattern string) ValidationRule {
 }
 
 // Range returns a validation rule that checks if the value is within the range.
-func Range[K constraints.Ordered](from K, to K) ValidationRule {
+func Range[K cmp.Ordered](from K, to K) ValidationRule {
 	return &DefaultValidationRule{
 		ruleName:     "Range",
 		ruleErrorMsg: fmt.Sprintf("should be in range %v to %v", from, to),

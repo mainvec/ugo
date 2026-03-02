@@ -33,7 +33,7 @@ func (r *Registry[T]) Register(name string, t T) {
 	}
 
 	if _, dup := r.m[name]; dup {
-		panic("Duplicated registration")
+		panic("Duplicated registration:" + name)
 	}
 
 	r.m[name] = t

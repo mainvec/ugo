@@ -12,7 +12,9 @@ type JSONEncoding struct {
 }
 
 func init() {
-	oencoding.RegisterEncoding("json", &JSONEncoding{})
+	jsonEncoding := &JSONEncoding{}
+	oencoding.RegisterEncoding("application/json", jsonEncoding)
+	oencoding.RegisterEncoding("json", jsonEncoding)
 }
 
 func (j *JSONEncoding) Encode(o any) ([]byte, error) {

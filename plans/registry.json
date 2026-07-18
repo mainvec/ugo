@@ -1,0 +1,14 @@
+{
+  "issues": [
+    {
+      "id": 1,
+      "type": "chore",
+      "title": "Prepare repository for open-source release",
+      "status": "in-progress",
+      "plan": "plans/001-open-source-release.md",
+      "branch": "chore/1-open-source-release",
+      "github_issue": "https://github.com/mainvec/ugo/issues/1",
+      "created": "2026-07-18"
+    }
+  ]
+}

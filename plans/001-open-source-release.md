@@ -1,7 +1,7 @@
 # #001: Prepare repository for open-source release
 **Type**: chore
 **Module**: (root)
-**Status**: review
+**Status**: done
 **GitHub**: https://github.com/mainvec/ugo/issues/1
 **Pull Request**: https://github.com/mainvec/ugo/pull/2
 **Branch**: chore/1-open-source-release
@@ -50,4 +50,5 @@ and preserved the upstream MIT license for the adapted CLI package in a third-pa
 **Status**: done
 **Notes**: Added pinned GitHub Actions checks, Dependabot configuration, issue forms, and a pull
 request template. Updated the live repository description, homepage, and topics, and enabled
-private vulnerability reporting. All 26 tests, formatting checks, and `go vet` pass.
+private vulnerability reporting. All 26 tests, formatting checks, and `go vet` pass. PR #2
+merged with both CI jobs passing, and issue #1 closed as completed.

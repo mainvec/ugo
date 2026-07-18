@@ -1,8 +1,9 @@
 # #001: Prepare repository for open-source release
 **Type**: chore
 **Module**: (root)
-**Status**: in-progress
+**Status**: review
 **GitHub**: https://github.com/mainvec/ugo/issues/1
+**Pull Request**: https://github.com/mainvec/ugo/pull/2
 **Branch**: chore/1-open-source-release
 
 ## Progress
@@ -15,7 +16,7 @@
 - [x] T2: Document the project and contribution process
 - [x] T3: Add continuous integration and repository metadata
 - [x] Tests passing (`go test ./...`)
-- [ ] PR opened (`Closes #1`)
+- [x] PR opened (`Closes #1`)
 
 ---
 
